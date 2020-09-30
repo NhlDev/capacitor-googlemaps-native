@@ -45,7 +45,7 @@ import java.util.List;
 
 
 @NativePlugin()
-public class CapacitorGoogleMaps extends Plugin implements OnMapReadyCallback {
+public class CapacitorGoogleMaps extends Plugin implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
 
     private MapView mapView;
     GoogleMap googleMap;
@@ -60,6 +60,9 @@ public class CapacitorGoogleMaps extends Plugin implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
         notifyListeners("onMapReady", null);
+
+        // set this instance as map click listener
+        this.googleMap.setOnMapClickListener(this);
     }
 
     @Override
